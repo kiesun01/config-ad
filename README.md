@@ -110,13 +110,13 @@ Step 12: Navigate on the left to Networking -> Network Settings
 
 ![image](https://github.com/user-attachments/assets/f3a9b18b-81e0-4b0e-a34f-f2bb209b2058)
 <p>
-Step 13: When we have a server (ex: DC1) that will offer services to another computer, (ex: we have a domain controller offering active directory services), in these cases we DONT want the ip address to change aka do not get it from DHCP, so we are gonna change domain controller virtual nic ip address from dynamic to static. Click on Network interface (ex: dc1559)
+Step 13: Click IP configurations.When we have a server (ex: DC1) that will offer services to another computer, (ex: we have a domain controller offering active directory services), in these cases we DONT want the ip address to change aka do not get it from DHCP, so we are gonna change domain controller virtual nic ip address from dynamic to static. Click on Network interface (ex: dc1559)
 </p>
 <br />
 
 ![image](https://github.com/user-attachments/assets/0323e40e-db2e-4bc4-abde-60c2df17ade1)
 <p>
-Step 14: Click IP configurations. When we have a server (ex: DC1) that will offer services to another computer, (ex: we have a domain controller offering active directory services), in these cases we DONT want the ip address to change aka do not get it from DHCP, so we are gonna change domain controller virtual nic ip address from dynamic to static. Click on Network interface (ex: dc1559)
+Step 14: Here we see the Private IP address is set to dynamic. Lets change this to Static. Click the Name (ex: ipconfig1)
 </p>
 <br />
 
