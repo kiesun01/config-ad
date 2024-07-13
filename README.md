@@ -176,3 +176,94 @@ Step 5: Open Command Line -> echo ping the Domain Controller's private IP addres
 <br />
 
 <h2>Part 3: (Install Active Directory Domain Services + promote as DC) Steps: 1 - 5</h2>
+
+![image](https://github.com/user-attachments/assets/2f225a45-c603-45a0-a48d-d44a9a5d600d)
+<p>
+Step 1: RDC into DC1. In Server Manager click Add roles and features -> next -> next -> next
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/d7434a87-32f9-4ba6-b082-f0be962fa38f)
+<p>
+Step 2: Check the box for Active Directory Domain Services -> Add Features -> next through all dependencies -> install
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/bec271da-cbbd-48b7-98ce-12c5abf76afb)
+<p>
+Step 3: Click exclamation in top right corder of Server Manager -> Click "Promote this server to a domain controller"
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/d83ff733-bbd9-4ed9-bee2-a5d45da4eba0)
+<p>
+Step 4: Choose Add a new forest -> Add a root domain name (ex: mydomain.com) -> Next
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/b845316f-3a86-4baa-b2e4-de6f1efd6e17)
+<p>
+Step 5: Enter a password -> Next through all checks -> Install -> Computer will restart when finished -> RDC back into DC1 after restart -> May have to enter username with domain: (username: mydomain.com\labuser)
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/8d513049-fae1-48fe-8488-4dd04ce541f5)
+<p>
+Domain Controller is online with domain set up.
+</p>
+<br />
+<br />
+<br />
+
+
+<h2>Part 4: (Create an Admin User Account in Active Directory) Steps: 1 - 7</h2>
+
+![image](https://github.com/user-attachments/assets/24ccca06-a926-40f2-9e31-e62c22134e31)
+<p>
+Step 1: Navigate to Active Directory Users and Computers
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/554e2d1f-56f8-437e-9e76-93bede2ff4fa) 
+![image](https://github.com/user-attachments/assets/d8b43806-1c57-474e-9d30-3340b82a6cf2)
+<p>
+Step 2: Create a new Organizational Unit (ex: _EMPLOYEES). note: underscore in name makes it easier to filter. Create another OU (ex: _ADMINS)
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/eb610b5a-0b8d-461c-b14d-22e4a5ebd771)
+![image](https://github.com/user-attachments/assets/2d2bbc18-39e3-4f34-a329-dcefd4727a79)
+<p>
+Step 3: We can continue using labuser, however ambiguous account names are not best practices. We are going to create another ADMIN account that is tied to an identity. Right click _ADMINS to create a new user.
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/1972bec6-f0e6-4d12-940e-ed793645efe1)
+<p>
+Step 4: Fill out information for the new user. (ex: jerry_admin) -> Next -> Set Password
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/c8d1ea1f-ff03-4f96-bcca-88f11a7d0185)
+<p>
+Step 5: Go to properties of user we want to give admin permissions
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/2f990c75-0046-4766-a40a-dec3c9040db2)
+<p>
+Step 6: Click Member of -> enter domain and click Check Names -> Domain Admins -> Ok -> Ok -> Apply
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/1a1601a3-66ce-4c37-a93d-c11cdb8a0339)
+![image](https://github.com/user-attachments/assets/3a5c2df1-9c87-40bd-95f1-d7a682fc9a45)
+<p>
+Step 7: Log out of Domain Controller(currently is labuser), log back in as our new user (ex:jerry_admin)
+</p>
+<br />
+<br />
+<br />
+
+
+<h2>Part 5: (Join a client to the domain) Steps: 1 - 8</h2>
