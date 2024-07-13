@@ -142,3 +142,37 @@ Step 17: Navigate to Virtual Machines. Ensure Both Client1 and DC1 are in the sa
 <br />
 
 <h2>Objective 2: (Ensure Connectivity between the client and Domain Controller) Steps: 1 - 5</h2>
+
+![image](https://github.com/user-attachments/assets/723b15b8-29b9-4738-905e-0edb729de37b)
+<p>
+Step 1: If we log in to Client1 and ping DC1, it will fail. We need to log in to our Domain Controller(DC1) and enable ICMPv4 on the local windows Firewall. Copy IP address from DC1 (ex:52.228.79.205) -> Use this to RDC into DC1 -> Enter credentials (ex:labuser/password)
+</p>
+
+![image](https://github.com/user-attachments/assets/6628faeb-70f3-4813-a0bb-8dbeaa55a31a)
+<p>
+Step 2: Open Windows Defender Firewall with Advanced Security
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/cc29f55b-9e61-4650-8c9d-588efff53929)
+![image](https://github.com/user-attachments/assets/1652b8bc-d853-47b6-97c3-0bb5c0abd481)
+<p>
+Step 3: Click Inbound Rules -> Enable both ICMP Echo Requests on protocol ICMPv4
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/a118f457-8719-4aa3-aad3-e65daf746d31)
+<p>
+Step 4: Minimize DC1 -> RDC into Client1
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/55d1c509-2b32-4e15-95da-f5d0283682fd)
+<p>
+Step 5: Open Command Line -> echo ping the Domain Controller's private IP address (ex: 10.0.0.4) -> Confirm connectivity is working -> close command lin -> minimize Client 1
+</p>
+<br />
+<br />
+<br />
+
+<h2>Part 3: (Install Active Directory Domain Services + promote as DC) Steps: 1 - 5</h2>
