@@ -267,3 +267,57 @@ Step 7: Log out of Domain Controller(currently is labuser), log back in as our n
 
 
 <h2>Part 5: (Join a client to the domain) Steps: 1 - 8</h2>
+
+![image](https://github.com/user-attachments/assets/ecf0835e-4495-4a3b-8126-2bea29c3a689)
+Step 1: Navigate to Domain Controller(ex: DC1) Virtual Machine -> Network settings -> copy private IP ADDRESS (ex: 10.0.0.4)
+FYI: We are planning to join a client computer to the domain and need to manage its DNS settings. When creating a VM within an Azure virtual network, IP addressing is automatically configured, and the DNS is set to use the VNET DNS Server. However, we want our client computer to use the IP address of the Domain Controller as its DNS server. This is because, when Active Directory is installed on a server and it becomes a Domain Controller, a DNS service is also installed. For the client to join the domain, it must use the Domain Controller as its DNS server. The Domain Controller has information about our domain (e.g., mydomain.com). If the client uses the VNET DNS server, it will attempt to resolve mydomain.com via the internet and fail.
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/74c6ba13-873e-4bdd-a3b2-a2c012aa2a47)
+![image](https://github.com/user-attachments/assets/03f2f733-3ce5-403f-8d57-695a95b58610)
+<p>
+Step 2: Navigate to the Client1 Virtual Machine -> Network settings -> click Network interface (ex: client 1582)
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/b99ccb39-4240-446c-acb3-2dc3c242120a)
+<p>
+Step 3: Settings -> DNS servers -> Check in Custom -> Enter Domain Controller (ex:DC1) private IP ADDRESS -> Save
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/f7a2c635-d1e0-4279-98da-77518dd31e56)
+<p>
+Step 4: Navigate to Client1 Virtual Machine -> Restart -> RDC into Client1 using labuser bc its not part of the domain yet.
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/0ca38c07-cc6f-4137-a96a-784f0a24e55b)
+<p>
+Step 5: Open command line -> ipconfig /all -> DNS Server should be 10.0.0.4 (Domain Controller private IP ADDRESS)
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/6e7a5687-2d21-449a-89c8-6306b4e8554f)
+<p>
+Step 6: Start -> System -> Rename this PC(adavanced) -> Change -> Check in Domain -> enter domain (ex:mydomain.com) -> Ok -> Enter the info of the Domain Administrator that we created (ex: mydomain.com\jerry_admin) -> Computer will restart
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/4a693033-9831-4cd6-849a-3944a1b5b40f)
+<p>
+Step 7: Now that Client1 is part of the domain, we can log into Client1 with our domain admin account.
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/181d4d0d-4c72-49c6-a512-9de6d970babd)
+<p>
+Step 8: To check, log into Client1 using admin username/password. 
+</p>
+<br />
+<br />
+<br />
+
+
+<h2>Part 6: (Allow multiple "domain users" to log into client) Step: 1 </h2>
