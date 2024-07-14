@@ -86,7 +86,7 @@ Step 8: Navigate back to Virtual Machines -> Create -> Azure virtual machine.  W
 ![image](https://github.com/user-attachments/assets/1cc5b2ac-3793-4e78-ab7e-f236e657383d)
 ![image](https://github.com/user-attachments/assets/a8d8d8d2-4766-4a5e-9acc-d629f09c88d1)
 <p>
-Step 9: Fill out info ex: Choose RG we created (ex: activeDirectory). Enter name (ex: Client1). Click Review + Create -> Next -> Next: Networking
+Step 9: Fill out info ex: Choose RG we created (ex: ActiveDirectory). Enter name (ex: Client1). Click Review + Create -> Next -> Next: Networking
 </p>
 <br />
 
@@ -321,3 +321,62 @@ Step 8: To check, log into Client1 using admin username/password.
 
 
 <h2>Part 6: (Allow multiple "domain users" to log into client) Step: 1 </h2>
+
+![image](https://github.com/user-attachments/assets/9e2e059b-0e90-4e8d-9199-7430e8049966)
+<p>
+Step 1: Client1 Environment -> System -> Remote Desktop -> Select users that can remotely access this PC -> Add -> domain users -> Check Names -> Ok
+</p>
+<p>
+note: This will simulate an environment on Client1 where any user on the domain can log into Client1 using their own username/password. Group Policy allows us to do the above to many different Clients at the same time.
+</p>
+<br />
+
+<h2>Part 7: (Test case for Part 6 ) Step: 1 - 6</h2>
+
+![image](https://github.com/user-attachments/assets/268fcb1c-a980-41f2-ba56-d38db9ee159f)
+<p>
+Step 1: Log into Domain Controller(ex: DC1) as admin (ex: jerry_admin)
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/55e2b5e9-7f0d-418f-937f-18009f7b4d0c)
+<p>
+Step 2: Open Powershell_ise as administrator 
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/fc2baeb9-94b1-49df-8dc1-1dd88120a644)
+<p>
+Step 3: Create a new script -> paste this code into file (https://github.com/kiesun01/ad-usergenerate) -> Run script
+</p>
+<p>
+note: This will create 10,000 different accounts with the password: Password1
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/0d991002-7b6b-4dd5-90f7-2ddab4d43beb)
+<p>
+Step 4: Navigate to Active Directory Users and Computers -> _EMPLOYEES -> refresh -> View employee list being populated
+</p>
+<br />
+<p>
+note: Because all 10,000 users are in the domain, they can all log in to Client1 with their own username/password.
+</p>
+
+![image](https://github.com/user-attachments/assets/0339ec27-878b-4c2c-a11b-706814f381d6)
+<p>
+Step 5: Copy a name from _EMPLOYEES (ex: cutoco.kupe) -> Minimize DC1
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/5ee64369-608d-432e-9fbe-1cd0929965bc)
+<p>
+Step 6: Log into Client1 with the employee name we have copied (ex: user:cutoco.kupe password:Password1)
+</p>
+<br />
+
+![image](https://github.com/user-attachments/assets/7d3ec221-cbd1-43ee-89a5-ac3c52c65c61)
+<p>
+Because cutoco.kupe is in the domain and Client1 is joined to that domain, Client1 can use the domain to validate cutoco.kupe and allow cutoco.kupe to log into Client1. All 10,000 users can now log into Client1!
+</p>
+<br />
